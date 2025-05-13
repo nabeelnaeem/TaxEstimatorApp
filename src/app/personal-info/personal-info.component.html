@@ -1,0 +1,81 @@
+<div class="mt-5">
+    <div class="text-center">
+        <h1 class="text-info ">
+            <i class="bi bi-file-person"></i> Personal Info
+        </h1>
+
+        <form class="text-start" [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" formControlName="name" class="form-control">
+                @if(personalForm.get('name')?.invalid && personalForm.get('name')?.touched){
+                <small class="text-danger">*Name is required!</small>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" id="email" formControlName="email" class="form-control" placeholder="user@email.com">
+                @if( personalForm.get('email')?.hasError('required') && personalForm.get('email')?.touched)
+                {<small class="text-danger">*Email is required!</small>}
+                @if( personalForm.get('email')?.hasError('email') && personalForm.get('email')?.dirty)
+                {<small class="text-danger">*Please enter a valid email address!</small>}
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" id="age" formControlName="age" class="form-control">
+                @if(personalForm.get('age')?.touched && personalForm.get('age')?.invalid ){
+                <small class="text-danger">*Minimum Age must be 18</small>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="maritalStatus" class="form-label">Marital Status</label>
+                <select name="maritalStatus" id="maritalStatus" class="form-control" formControlName="maritalStatus">
+                    @for (marStatus of maritalStatus; track marStatus){
+                    <option [value]="marStatus.value" [disabled]="!marStatus.value">
+                        {{ marStatus.name }}
+                    </option>
+                    }
+                </select>
+                @if(personalForm.get('maritalStatus')?.touched && personalForm.get('maritalStatus')?.invalid ){
+                <small class="text-danger">*Required</small>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <select name="country" id="country" class="form-control" formControlName="country">
+                    @for (country of countries; track country) {
+                    <option [value]="country.value" [disabled]="!country.value">
+                        {{ country.name }}
+                    </option>
+                    }
+                </select>
+                @if(personalForm.get('country')?.touched && personalForm.get('country')?.invalid ){
+                <small class="text-danger">*Required</small>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="employmentType" class="form-label">Employment Type</label>
+                <select name="employmentType" id="employmentType" class="form-control" formControlName="employmentType">
+                    @for (empType of employmentTypes; track empType) {
+                    <option [value]="empType.value" [disabled]="!empType.value">
+                        {{ empType.name }}
+                    </option>
+                    }
+                </select>
+                @if(personalForm.get('employmentType')?.touched && personalForm.get('employmentType')?.invalid ){
+                <small class="text-danger">*Required</small>
+                }
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-lg btn-info mt-5 mb-5" bi-cash-coin
+                    [disabled]="personalForm.invalid">Move to
+                    Financial
+                    Info</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="mb-5">
+    <app-privacy-paragraph></app-privacy-paragraph>
+</div>

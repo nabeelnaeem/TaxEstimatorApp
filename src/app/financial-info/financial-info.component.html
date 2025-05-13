@@ -1,0 +1,55 @@
+<div class="mt-5">
+    <div class="text-center">
+        <h1 class="text-info ">
+            <i class="bi bi-cash-coin"></i> Financial Info
+        </h1>
+
+        <!-- <div class="bg-warning p-2 rounded rounded-5 text-black fs-6 mt-5 mb-5">
+            <span class=" fw-bold text-uppercase">This is for testing only</span> <br>
+            Name: {{personalServForm.name}} <br> Email: {{personalServForm.email}} <br> Age: {{personalServForm.age}}
+            <br>
+            Country:
+            {{personalServForm.country}} <br> Marrital Status: {{personalServForm.maritalStatus}} <br> Employement:
+            {{personalServForm.employmentType}}
+        </div> -->
+
+        {{name}}, Please enter your financial info to
+        calculate
+        tax estimations.
+        <div class="text-center">
+            <button type="button" class="btn btn-sm btn-info mt-2 mb-5" (click)="onEditPersonalInfo()">Change Personal
+                Info (Go Back)</button>
+        </div>
+        <form class="text-start" [formGroup]="financialForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="annualIncome" class="form-label">Annual Income</label>
+                <input type="number" id="annualIncome" formControlName="annualIncome" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="otherIncome" class="form-label">Other Income</label>
+                <input type="number" id="otherIncome" formControlName="otherIncome" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="mortgageInterest" class="form-label">Mortgage Interest</label>
+                <input type="number" id="mortgageInterest" formControlName="mortgageInterest" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="educationExpenses" class="form-label">Education Expenses</label>
+                <input type="number" id="educationExpenses" formControlName="educationExpenses" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="charitableDonations" class="form-label">Charitable Donations</label>
+                <input type="number" id="charitableDonations" formControlName="charitableDonations"
+                    class="form-control">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-lg btn-info mt-3 mb-3">Calculate</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="mb-5">
+    <app-privacy-paragraph></app-privacy-paragraph>
+</div>
