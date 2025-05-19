@@ -21,12 +21,12 @@ export class PersonalInfoComponent implements OnInit {
     maritalStatus = InfomationModels.maritalStatus;
 
     personalForm = this.fb.group({
-        name: ['Nabeel Naeem Testing', Validators.required],
-        email: ['nnabeel03@gmail.com', [Validators.required, Validators.email]],
-        age: [60, [Validators.required, Validators.min(18)]],
-        maritalStatus: ['Married', Validators.required],
-        country: ['Morocco', Validators.required],
-        employmentType: ['Contract', Validators.required]
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        age: [18, [Validators.required, Validators.min(18)]],
+        maritalStatus: ['', Validators.required],
+        country: ['', Validators.required],
+        employmentType: ['', Validators.required]
     })
 
     ngOnInit() {
